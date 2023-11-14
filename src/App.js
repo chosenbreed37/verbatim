@@ -1,7 +1,20 @@
+import SearchView from "./SearchView";
+import { useState } from 'react';
+
 function App() {
+  const [searchText, setSearchText] = useState('');
+
+  const onSearch = () => {
+    console.log('>>> onSearch...');    
+  }
+
+  const onSetSearchText = (text) => {
+    console.log('>>> onSetSearchText: ', text);
+    setSearchText(text);
+  }
+
   return (
-    <div>
-    </div>
+      <SearchView onChangeText={onSetSearchText} onSearch={onSearch} />
   );
 }
 
