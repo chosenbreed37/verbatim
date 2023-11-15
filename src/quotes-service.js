@@ -2,8 +2,9 @@ const quotes = require('./data/quotes.json');
 
 
 function search(searchTerm, collection) {    
+    const regex = new RegExp(searchTerm, 'i');
     function match (target) {
-        return target && target.search(searchTerm);
+        return target && regex.test(target);
     }
 
     return collection
