@@ -5,12 +5,12 @@ import { createService } from "./quotes-service";
 
 function SearchView({ }) {
     const [searchText, setSearchText] = useState('');
+    const [matches, setMatches] = useState([]);
 
     const onSearch = () => {
         const srv = createService();
-        console.log('>>> searching for: ', searchText);
         const results = srv.search(searchText);
-        console.log('>>> results: ', results);
+        setMatches(results);
     }
 
     const onChangeText = (text) => {
@@ -19,7 +19,7 @@ function SearchView({ }) {
 
     return (<div>
         <SearchQuery onChangeText={onChangeText} onSearch={onSearch} />
-        <SearchResults />
+        <SearchResults matches={matches} />
     </div>);
 }
 
